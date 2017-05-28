@@ -1,15 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router'; //Para recibir parámetros
+import { HeroesService } from './../../services/heroes.service';
 
 @Component({
   selector: 'app-heroes-filtrados',
-  templateUrl: './heroes-filtrados.component.html',
-  styleUrls: ['./heroes-filtrados.component.css']
+  templateUrl: './heroes-filtrados.component.html'
 })
-export class HeroesFiltradosComponent implements OnInit {
+export class HeroesFiltradosComponent {
 
-  constructor() { }
+  private heroes;
 
-  ngOnInit() {
+  constructor( private activatedRoute: ActivatedRoute,
+               private heroesService: HeroesService)
+  {
+
+    this.activatedRoute.params.subscribe(
+      params => this.heroes = this.heroesService.buscarHeroes(params['termino']),
+      err => console.error(err)
+    );
   }
+
 
 }

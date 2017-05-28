@@ -15,9 +15,8 @@ export class NavbarComponent {
 
   private buscarHeroe( parametro )
   {
-    console.log(parametro);
 
-    this.router.navigate(['/buscar',parametro])
+    this.router.navigate(['/buscador',parametro])
 
   }
 
