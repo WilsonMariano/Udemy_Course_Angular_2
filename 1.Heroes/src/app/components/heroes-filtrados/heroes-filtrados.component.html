@@ -1,6 +1,14 @@
-<h1>Héroes<small> de Marvel y DC</small></h1>
+<h1>Buscando:<small> {{ termino }}</small></h1>
 
 <hr>
+
+<div *ngIf="heroes.length == 0" class="row"> 
+  <div class="col-md-12">
+    <div class="alert alert-danger" role="alert">
+      No existen resultados con el término: <b>{{ termino }}</b>
+    </div>
+  </div>
+</div>
 
 <div class="card-columns">
 

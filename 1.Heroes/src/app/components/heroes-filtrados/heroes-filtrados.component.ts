@@ -9,14 +9,18 @@ import { HeroesService } from './../../services/heroes.service';
 export class HeroesFiltradosComponent {
 
   private heroes;
+  private termino: string;
 
   constructor( private activatedRoute: ActivatedRoute,
                private heroesService: HeroesService)
   {
 
     this.activatedRoute.params.subscribe(
-      params => this.heroes = this.heroesService.buscarHeroes(params['termino']),
-      err => console.error(err)
+      params =>
+        { 
+          this.termino = params['termino'];
+          this.heroes = this.heroesService.buscarHeroes(this.termino);
+        }
     );
   }
 
