@@ -1,0 +1,146 @@
+<div class="container">
+
+  <br>
+  <h1>Pipes</h1>
+  <hr>
+
+  <table class="table">
+    <thead class="thead-inverse">
+      <tr>
+        <th>Entrada</th>
+        <th>Pipe</th>
+        <th>Salida</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ nombre }}</td>
+        <td><b> upercase </b></td>
+        <td> {{ nombre | uppercase }}</td> <!--Convierte string a mayúsculas-->
+      </tr>
+      <tr>
+        <td>{{ nombre }}</td>
+        <td><b> lowercase </b></td>
+        <td> {{ nombre | lowercase }}</td> <!--Convierte string a minùesculas-->
+      </tr>
+      <tr>
+        <td>{{ nombre }}</td>
+        <td><b> slice:3 </b></td>
+        <td> {{ nombre | slice:3 }}</td> <!--Corta las primeras 3 posiciones-->
+      </tr>
+      <tr>
+        <td>{{ nombre }}</td>
+        <td><b> slice:0:3 </b></td>
+        <td> {{ nombre | slice:0:3 }}</td> <!--Deja las primeras 3 posiciones-->
+      </tr>
+      <tr>
+        <td>{{ arreglo }}</td>
+        <td><b> slice:1:5 </b></td>
+        <td> {{ arreglo | slice:1:5 }}</td> <!--Toma las posiciones del 1 al 5-->
+      </tr>
+      <tr>
+        <td>{{ PI }}</td>
+        <td><b> number </b></td>
+        <td> {{ PI | number }}</td> <!--Cambia el total de decimales-->
+      </tr>
+      <tr>
+        <td>{{ PI }}</td>
+        <td><b> number:3.0-0 </b></td>
+        <td> {{ PI | number:'3.0-0' }}</td> <!--Formatea el numero a 3 enteros y 0 decimales-->
+      </tr>
+      <tr>
+        <td>{{ PI }}</td>
+        <td><b> number </b></td>
+        <td> {{ PI | number:'1.0-2' }}</td> <!--Formatea el numero a 1 entero, 0 decimales mìnimos, y 2 decimales màximos-->
+      </tr>
+      <tr>
+        <td>{{ a }}</td>
+        <td><b> percent </b></td>
+        <td> {{ a | percent }}</td> <!--Convierto el numero a porcentaje (multiplica por 100)-->
+      </tr>
+      <tr>
+        <td>{{ a }}</td>
+        <td><b> percent:'2.2-2' </b></td>
+        <td> {{ a | percent:'2.2-2' }}</td> <!--Convierto el numero a porcentaje, 2 enteros, 2 decimales mínimo y 2 decimales máximo-->
+      </tr>
+      <tr>
+        <td>{{ salario }}</td>
+        <td><b> currency </b></td>
+        <td> {{ salario | currency }}</td> <!--Agrego abreviacion de billete-->
+      </tr>
+      <tr>
+        <td>{{ salario }}</td>
+        <td><b> currency:'EUR'  </b></td>
+        <td> {{ salario | currency:'EUR' }}</td> <!--Agrego abreviación de euro-->
+      </tr>
+      <tr>
+        <td>{{ salario }}</td>
+        <td><b> currency:'EUR':true  </b></td>
+        <td> {{ salario | currency:'EUR':true }}</td> <!--Agrego signo de euro-->
+      </tr>
+      <tr>
+        <td>{{ salario }}</td>
+        <td><b> currency:'EUR':true:'4.0-0'  </b></td>
+        <td> {{ salario | currency:'EUR':true:'4.0-0' }}</td> <!--Agrego signo de euro, 4 numeros enteros y 0 decimales-->
+      </tr>
+      <tr>
+        <td>{{ valorPromesa }}</td>
+        <td><b> async  </b></td>
+        <td> {{ valorPromesa | async }}</td> <!--Muestro el valor de una promesa asincronicamente-->
+      </tr>
+      <tr>
+        <td>{{ fecha }}</td>
+        <td><b> date  </b></td>
+        <td> {{ fecha | date:'dd-mm-yy' }}</td> <!--Formateo la fecha con dia, mes y año-->
+      </tr>
+      <tr>
+        <td>{{ fecha }}</td>
+        <td><b> date:'medium'  </b></td>
+        <td> {{ fecha | date:'medium' }}</td> <!--Muestro fecha y hora-->
+      </tr>
+      <tr>
+        <td>{{ fecha }}</td>
+        <td><b> date:'dd-MMMM'  </b></td>
+        <td> {{ fecha | date:'dd-MMMM' }}</td> <!--Muestro el día y el mes en palabras-->
+      </tr>
+      <tr>
+        <td>{{ nombre2 }}</td>
+        <td><b> capitalizado (creación de pipe)  </b></td>
+        <td> {{ nombre2 | capitalizado }}</td> <!--Capitalizo todas las palabras de un string con un pipe creado-->
+      </tr>
+      <tr>
+        <td>{{ nombre2 }}</td>
+        <td><b> capitalizado:false (creación de pipe)  </b></td>
+        <td> {{ nombre2 | capitalizado:false }}</td> <!--Capitalizo la primer palabra de un string con un pipe creado-->
+      </tr>
+      <tr>
+        <td>{{ nombre }}</td>
+        <td><b> contrasena:{{ activar }} (creación de pipe)  </b>
+          <button type="button" class="btn btn-outline-primary" (click)="activar = !activar">Mostrar / Ocultar</button>
+        </td>
+        <td> {{ nombre | contrasena:activar }}</td> <!---->
+      </tr>
+    </tbody>
+  </table>
+
+
+  <h4> Slice </h4>
+  <ul>
+    <li *ngFor="let i of arreglo | slice:5:20">{{ i }}</li> <!--Toma las posiciones del 5 al 20-->
+  </ul>
+
+  <br>
+
+  <h4> JSON </h4> <!--Bootstrap 4, muestro un formato json en cascada-->
+  <pre>
+    {{ heroe | json}} <!--Muestro un objeto con formato json-->
+  </pre>
+
+  <br>
+
+  <h4> Youtube </h4>
+  <hr>
+  <iframe width="560" height="315" [src]=" video | domseguro:'https://www.youtube.com/embed/'" frameborder="5" allowfullscreen></iframe> <!--Doy permisos con el pipe para mostrar el video-->
+
+</div>
+<br><br>
